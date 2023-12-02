@@ -19,6 +19,10 @@ class Lotto {
   includes(number) {
     return this.#numbers.includes(number);
   }
+
+  toString() {
+    return `[${this.#numbers.sort((a, b) => a - b).join(', ')}]`;
+  }
 }
 
 export default Lotto;
