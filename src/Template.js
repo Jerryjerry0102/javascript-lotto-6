@@ -11,5 +11,5 @@ export const WINNING_AND_BONUS_TEMPLATE = (
   winningAndBonusCount,
   prizeMoney,
   winningCount,
-) => `${matchingNumbersCount}개 일치, 보너스 볼 일치 (${bonusPrizeMoney.toLocaleString()}원) - ${winningAndBonusCount}개
-${WINNIG_TEMPLATE(matchingNumbersCount, prizeMoney, winningCount)}`;
+) => `${WINNIG_TEMPLATE(matchingNumbersCount, prizeMoney, winningCount)}
+${matchingNumbersCount}개 일치, 보너스 볼 일치 (${bonusPrizeMoney.toLocaleString()}원) - ${winningAndBonusCount}개`;

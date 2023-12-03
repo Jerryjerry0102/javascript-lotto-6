@@ -5,17 +5,20 @@ class LottoResult {
     this.#winningResults = winningResults;
   }
 
-  check(userLottos, winningNumbers, bonusNumber) {
+  check(userLottos, winningLotto) {
     userLottos.forEach((userLotto) => {
-      const index = this.#findWinningResultsIndex(winningNumbers, userLotto);
-      const isBonusNumberMatched = userLotto.includes(bonusNumber);
+      const index = userLotto.getMatchingNumbersCount(winningLotto);
+      const isBonusNumberMatched =
+        winningLotto.isBonusNumberIncludedIn(userLotto);
       this.#winningResults[index]?.increaseWinningCount(isBonusNumberMatched);
     });
+
+    this.#removeNull();
   }
 
-  #findWinningResultsIndex(winningNumbers, userLotto) {
-    return (
-      winningNumbers.length - userLotto.getMatchingNumbersCount(winningNumbers)
+  #removeNull() {
+    this.#winningResults = this.#winningResults.filter(
+      (winningResult) => winningResult,
     );
   }
 

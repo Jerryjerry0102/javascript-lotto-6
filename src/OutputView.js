@@ -24,7 +24,11 @@ const OutputView = {
   },
 
   printProfitRate(profitRate) {
-    Console.print(`총 수익률은 ${profitRate.toFixed(1)}%입니다.`);
+    Console.print(`총 수익률은 ${this.formatProfitRate(profitRate)}%입니다.`);
+  },
+
+  formatProfitRate(profitRate) {
+    return profitRate.toFixed(1).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   },
 };
 
