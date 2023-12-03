@@ -1,7 +1,7 @@
 import { Random } from '@woowacourse/mission-utils';
-import Lotto from './Lotto.js';
-import LottoValidator from './LottoValidator.js';
-import WinningLotto from './WinningLotto.js';
+import Lotto from '../domain/lotto/Lotto.js';
+import LottoValidator from '../validator/LottoValidator.js';
+import WinningLotto from '../domain/lotto/WinningLotto.js';
 
 class LottoGenerator {
   #numOfNumbers;

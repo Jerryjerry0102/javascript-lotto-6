@@ -1,4 +1,4 @@
-import { WINNING_AND_BONUS_TEMPLATE } from './Template.js';
+import { WINNING_AND_BONUS_TEMPLATE } from '../../ui/Template.js';
 import WinningResult from './WinningResult.js';
 
 class WinningAndBonusResult extends WinningResult {

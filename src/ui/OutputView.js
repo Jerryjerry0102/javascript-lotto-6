@@ -17,10 +17,9 @@ const OutputView = {
   },
 
   formatWinningResults(winningResults) {
-    return winningResults.reduce(
-      (message, winningResult) => `${message + winningResult.toString()}\n`,
-      '',
-    );
+    return winningResults
+      .map((winningResult) => winningResult.toString())
+      .join('\n');
   },
 
   printProfitRate(profitRate) {
@@ -29,6 +28,10 @@ const OutputView = {
 
   formatProfitRate(profitRate) {
     return profitRate.toFixed(1).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  },
+
+  printErrorMessage(errorMessage) {
+    Console.print(`[ERROR] ${errorMessage}`);
   },
 };
 

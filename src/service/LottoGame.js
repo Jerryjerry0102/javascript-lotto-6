@@ -1,11 +1,10 @@
-import { Console } from '@woowacourse/mission-utils';
-import InputView from './InputView.js';
+import InputView from '../ui/InputView.js';
 import LottoGenerator from './LottoGenerator.js';
-import LottoResult from './LottoResult.js';
-import OutputView from './OutputView.js';
-import PurchaseAmount from './PurchaseAmount.js';
-import WinningAndBonusResult from './WinningAndBonusResult.js';
-import WinningResult from './WinningResult.js';
+import LottoResult from '../domain/result/LottoResult.js';
+import OutputView from '../ui/OutputView.js';
+import PurchaseAmount from '../domain/PurchaseAmount.js';
+import WinningResult from '../domain/result/WinningResult.js';
+import WinningAndBonusResult from '../domain/result/WinningAndBonusResult.js';
 
 class LottoGame {
   #purchaseAmount;
@@ -35,11 +34,12 @@ class LottoGame {
     this.#updateAndPrintLottos();
 
     await this.#updateWinningLotto();
-    // const winningNumbers = [4, 8, 15, 23, 42, 7]; // 가정
-    // const bonusNumber = 7; // 가정
     this.#lottoResult.check(this.#lottos, this.#winningLotto);
 
-    this.#printLottoResult();
+    OutputView.printWinningResults(this.#lottoResult.getWinningResults());
+    OutputView.printProfitRate(
+      this.#lottoResult.calculateProfitRate(this.#purchaseAmount),
+    );
   }
 
   async #updateWinningLotto() {
@@ -51,7 +51,7 @@ class LottoGame {
         );
         break;
       } catch (error) {
-        Console.print(error.message);
+        OutputView.printErrorMessage(error.message);
       }
     }
   }
@@ -63,7 +63,7 @@ class LottoGame {
         this.#purchaseAmount = new PurchaseAmount(1000, input);
         break;
       } catch (error) {
-        Console.print(error.message);
+        OutputView.printErrorMessage(error.message);
       }
     }
   }
@@ -73,13 +73,6 @@ class LottoGame {
     this.#lottos = this.#lottoGenerator.generateLottos(numOfLottos);
     OutputView.printNumOfLottos(numOfLottos);
     OutputView.printLottos(this.#lottos);
-  }
-
-  #printLottoResult() {
-    OutputView.printWinningResults(this.#lottoResult.getWinningResults());
-    OutputView.printProfitRate(
-      this.#lottoResult.calculateProfitRate(this.#purchaseAmount),
-    );
   }
 }
 

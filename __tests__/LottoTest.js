@@ -1,6 +1,6 @@
-import Lotto from '../src/Lotto.js';
-import LottoValidator from '../src/LottoValidator.js';
-import WinningLotto from '../src/WinningLotto.js';
+import Lotto from '../src/domain/lotto/Lotto';
+import WinningLotto from '../src/domain/lotto/WinningLotto';
+import LottoValidator from '../src/validator/LottoValidator';
 
 describe('로또 클래스 테스트', () => {
   const validator = new LottoValidator(6, {
@@ -12,19 +12,19 @@ describe('로또 클래스 테스트', () => {
     test('로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.', () => {
       expect(() => {
         new Lotto([1, 2, 3, 4, 5, 6, 7], validator);
-      }).toThrow('[ERROR]');
+      }).toThrow();
     });
 
     test('로또 번호에 중복된 숫자가 있으면 예외가 발생한다.', () => {
       expect(() => {
         new Lotto([1, 2, 3, 4, 5, 5], validator);
-      }).toThrow('[ERROR]');
+      }).toThrow();
     });
 
     test('로또 번호 중에 1~45 사이를 벗어난 숫자가 있으면 예외가 발생한다.', () => {
       expect(() => {
         new Lotto([1, 2, 3, 4, 5, 46], validator);
-      }).toThrow('[ERROR]');
+      }).toThrow();
     });
   });
 

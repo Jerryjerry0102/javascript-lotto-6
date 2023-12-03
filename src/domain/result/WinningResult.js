@@ -1,4 +1,4 @@
-import { WINNIG_TEMPLATE } from './Template.js';
+import { WINNIG_TEMPLATE } from '../../ui/Template.js';
 
 class WinningResult {
   #winningCount = 0;

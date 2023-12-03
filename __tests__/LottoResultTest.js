@@ -1,11 +1,11 @@
-import Lotto from '../src/Lotto';
-import LottoResult from '../src/LottoResult';
-import LottoValidator from '../src/LottoValidator';
-import OutputView from '../src/OutputView';
-import PurchaseAmount from '../src/PurchaseAmount';
-import WinningAndBonusResult from '../src/WinningAndBonusResult';
-import WinningLotto from '../src/WinningLotto';
-import WinningResult from '../src/WinningResult';
+import Lotto from '../src/domain/lotto/Lotto';
+import WinningLotto from '../src/domain/lotto/WinningLotto';
+import PurchaseAmount from '../src/domain/PurchaseAmount';
+import LottoResult from '../src/domain/result/LottoResult';
+import WinningAndBonusResult from '../src/domain/result/WinningAndBonusResult';
+import WinningResult from '../src/domain/result/WinningResult';
+import OutputView from '../src/ui/OutputView';
+import LottoValidator from '../src/validator/LottoValidator';
 
 describe('로또 결과 확인자 클래스 테스트', () => {
   const validator = new LottoValidator(6, {
@@ -39,8 +39,7 @@ describe('로또 결과 확인자 클래스 테스트', () => {
 4개 일치 (50,000원) - 1개
 5개 일치 (1,500,000원) - 1개
 5개 일치, 보너스 볼 일치 (30,000,000원) - 1개
-6개 일치 (2,000,000,000원) - 1개
-`;
+6개 일치 (2,000,000,000원) - 1개`;
 
     test('[1등 1개, 2등 1개, 3등 1개, 4등 1개, 5등 1개]', () => {
       expect(
@@ -83,8 +82,7 @@ describe('로또 결과 확인자 클래스 테스트', () => {
 4개 일치 (50,000원) - 0개
 5개 일치 (1,500,000원) - 0개
 5개 일치, 보너스 볼 일치 (30,000,000원) - 0개
-6개 일치 (2,000,000,000원) - 0개
-`;
+6개 일치 (2,000,000,000원) - 0개`;
 
     test('[1등 0개, 2등 0개, 3등 0개, 4등 0개, 5등 1개]', () => {
       expect(

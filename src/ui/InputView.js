@@ -25,7 +25,7 @@ const InputView = {
   },
 
   validateNumber(input) {
-    if (!input) throw new Error('[ERROR] 올바른 숫자를 입력하세요.\n');
+    if (!input) throw new Error('올바른 숫자를 입력하세요.\n');
   },
 };
 
