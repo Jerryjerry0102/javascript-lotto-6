@@ -43,13 +43,14 @@ class LottoGame {
   }
 
   async #updateWinningLotto() {
-    while (true) {
+    let isValidInput = false;
+    while (!isValidInput) {
       try {
         this.#winningLotto = this.#lottoGenerator.generateWinningLotto(
           await InputView.readWinningNumbers(),
           await InputView.readBonusNumber(),
         );
-        break;
+        isValidInput = true;
       } catch (error) {
         OutputView.printErrorMessage(error.message);
       }
@@ -57,11 +58,12 @@ class LottoGame {
   }
 
   async #updatePurchaseAmount() {
-    while (true) {
+    let isValidInput = false;
+    while (!isValidInput) {
       try {
         const input = await InputView.readPurchaseAmount();
         this.#purchaseAmount = new PurchaseAmount(1000, input);
-        break;
+        isValidInput = true;
       } catch (error) {
         OutputView.printErrorMessage(error.message);
       }
