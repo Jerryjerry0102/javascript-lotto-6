@@ -24,7 +24,7 @@ class LottoResult {
   }
 
   calculateProfitRate(purchaseAmount) {
-    return (this.#calculateTotalPrizeMoney() / purchaseAmount) * 100;
+    return purchaseAmount.calculateProfitRate(this.#calculateTotalPrizeMoney());
   }
 
   #calculateTotalPrizeMoney() {

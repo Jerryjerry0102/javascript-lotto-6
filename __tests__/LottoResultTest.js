@@ -1,6 +1,7 @@
 import Lotto from '../src/Lotto';
 import LottoResult from '../src/LottoResult';
 import OutputView from '../src/OutputView';
+import PurchaseAmount from '../src/PurchaseAmount';
 import WinningAndBonusResult from '../src/WinningAndBonusResult';
 import WinningResult from '../src/WinningResult';
 
@@ -36,7 +37,9 @@ describe('로또 결과 확인자 클래스 테스트', () => {
     });
 
     test('수익률', () => {
-      expect(lottoResult.calculateProfitRate(10000)).toBe(20315550);
+      expect(
+        lottoResult.calculateProfitRate(new PurchaseAmount(1000, 5000)),
+      ).toBe(40631100);
     });
   });
 
@@ -74,7 +77,9 @@ describe('로또 결과 확인자 클래스 테스트', () => {
     });
 
     test('수익률', () => {
-      expect(lottoResult.calculateProfitRate(8000)).toBe(62.5);
+      expect(
+        lottoResult.calculateProfitRate(new PurchaseAmount(1000, 8000)),
+      ).toBe(62.5);
     });
   });
 });
